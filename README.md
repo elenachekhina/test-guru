@@ -2,17 +2,14 @@
 
 Contains:
 
-* User:
+* User
 
-    * Administrator
-    * Tested
+* Administrator
 
 * Test
 
 * Question
 
-* Constructor (for test creation)
-
-* Platform (where test execute)
-
 * Answer
+
+* Category
