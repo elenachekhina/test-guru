@@ -12,20 +12,20 @@ Test.destroy_all
 User.destroy_all
 Category.destroy_all
 
-categories = Category.create([
+categories = Category.create!([
                { title: 'Backend' },
                { title: 'Frontend' },
                { title: 'Analytics' },
                { title: 'Unknown' }
              ])
 
-users = User.create([
+users = User.create!([
            { name: 'Lena' },
            { name: 'Alex' },
            { name: 'Kate' }
          ])
 
-tests = Test.create([
+tests = Test.create!([
            { title: 'Ruby', level: 1, category_id:  categories[0].id, author_id: users[1].id},
            { title: 'Rails', level: 2, category_id:  categories[0].id, author_id: users[1].id},
            { title: 'Probability theory', level: 2, category_id:  categories[2].id, author_id: users[0].id},
@@ -34,7 +34,7 @@ tests = Test.create([
            { title: 'CSS', level: 0, category_id:  categories[1].id, author_id: users[2].id},
          ])
 
-Question.create([
+questions = Question.create!([
                {body: 'Question 1', test_id: tests[0].id},
                {body: 'Question 2', test_id: tests[0].id},
                {body: 'Question 3', test_id: tests[0].id},
@@ -44,7 +44,7 @@ Question.create([
                {body: 'Question 7', test_id: tests[4].id},
              ])
 
-TestsResult.create([
+TestsResult.create!([
                      { test_id: tests[0].id, user_id: users[0].id, result: 10 },
                      { test_id: tests[1].id, user_id: users[1].id, result: 5 },
                      { test_id: tests[2].id, user_id: users[2].id, result: 7 },
@@ -55,3 +55,12 @@ TestsResult.create([
                      { test_id: tests[1].id, user_id: users[0].id, result: 7 }
                    ])
 
+Answer.create!([
+                  {body: 'Answer 1', question_id: questions[0].id, correct: true},
+                  {body: 'Answer 2', question_id: questions[1].id, correct: true},
+                  {body: 'Answer 3', question_id: questions[2].id, correct: true},
+                  {body: 'Answer 4', question_id: questions[3].id, correct: true},
+                  {body: 'Answer 5', question_id: questions[4].id, correct: true},
+                  {body: 'Answer 6', question_id: questions[5].id, correct: true},
+                  {body: 'Answer 7', question_id: questions[6].id, correct: true}
+                ])
