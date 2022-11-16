@@ -6,6 +6,12 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
+TestsResult.destroy_all
+Question.destroy_all
+Test.destroy_all
+User.destroy_all
+Category.destroy_all
+
 categories = Category.create([
                { title: 'Backend' },
                { title: 'Frontend' },
@@ -37,3 +43,15 @@ Question.create([
                {body: 'Question 6', test_id: tests[4].id},
                {body: 'Question 7', test_id: tests[4].id},
              ])
+
+TestsResult.create([
+                     { test_id: tests[0].id, user_id: users[0].id, result: 10 },
+                     { test_id: tests[1].id, user_id: users[1].id, result: 5 },
+                     { test_id: tests[2].id, user_id: users[2].id, result: 7 },
+                     { test_id: tests[3].id, user_id: users[2].id, result: 4 },
+                     { test_id: tests[4].id, user_id: users[2].id, result: 8 },
+                     { test_id: tests[5].id, user_id: users[1].id, result: 7 },
+                     { test_id: tests[3].id, user_id: users[1].id, result: 6 },
+                     { test_id: tests[1].id, user_id: users[0].id, result: 7 }
+                   ])
+
