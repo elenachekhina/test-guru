@@ -1,10 +1,4 @@
 class Test < ApplicationRecord
-  LEVELS = {
-    easy: 0..1,
-    middle: 2..4,
-    hard: 5..Float::INFINITY
-  }.freeze
-
   belongs_to :category
   belongs_to :author, foreign_key: 'author_id', class_name: 'User'
 
@@ -15,9 +9,15 @@ class Test < ApplicationRecord
   validates :title, presence: true
   validates :level, numericality: { only_integer: true }, comparison: { greater_than: 0 }, uniqueness: { scope: :title }
 
-  scope :tests_of_level, ->(level) { where(level: LEVELS[level]) }
+  scope :tests_of_level, ->(level) { where(level: level) }
   scope :tests_of_category, ->(category) { joins(:category).where(category: { title: category }).order(title: :desc) }
-  scope :easy, -> { tests_of_level(:easy) }
-  scope :middle, -> { tests_of_level(:middle) }
-  scope :hard, -> { tests_of_level(:hard) }
+  scope :easy, -> { tests_of_level(0..1) }
+  scope :middle, -> { tests_of_level(2..4) }
+  scope :hard, -> { tests_of_level(5..Float::INFINITY) }
+
+  class << self
+    def tests_list_of_category(category)
+      tests_of_category(category).pluck(:title)
+    end
+  end
 end
