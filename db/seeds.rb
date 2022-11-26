@@ -20,18 +20,18 @@ categories = Category.create!([
                               ])
 
 users = User.create!([
-                       { name: 'Lena' },
-                       { name: 'Alex' },
-                       { name: 'Kate' }
+                       { name: 'Lena', email: 'email@lena.com' },
+                       { name: 'Alex', email: 'email@alex.com' },
+                       { name: 'Kate', email: 'email@kate.com' }
                      ])
 
 tests = Test.create!([
                        { title: 'Ruby', level: 1, category: categories[0], author: users[1] },
                        { title: 'Rails', level: 2, category: categories[0], author: users[1] },
-                       { title: 'Probability theory', level: 2, category: categories[2], author: users[0] },
-                       { title: 'ML', level: 1, category: categories[2], author: users[0] },
-                       { title: 'JavaScript', level: 1, category: categories[1], author: users[2] },
-                       { title: 'CSS', level: 0, category: categories[1], author: users[2] }
+                       { title: 'Probability theory', level: 3, category: categories[2], author: users[0] },
+                       { title: 'ML', level: 5, category: categories[2], author: users[0] },
+                       { title: 'JavaScript', level: 2, category: categories[1], author: users[2] },
+                       { title: 'CSS', level: 1, category: categories[1], author: users[2] }
                      ])
 
 questions = Question.create!([
