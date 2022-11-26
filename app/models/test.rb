@@ -14,6 +14,7 @@ class Test < ApplicationRecord
   scope :easy, -> { tests_of_level(0..1) }
   scope :middle, -> { tests_of_level(2..4) }
   scope :hard, -> { tests_of_level(5..Float::INFINITY) }
+  scope :questions, ->(id) { where(id: id).questions }
 
   class << self
     def tests_list_of_category(category)
