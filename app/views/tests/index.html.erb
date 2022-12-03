@@ -1,0 +1,10 @@
+<table>
+  <tr>
+    <th>Test name</th>
+    <th>Level</th>
+    <th>Questions</th>
+  </tr>
+  <% Test.all.each do |test| %>
+    <%= render test %>
+  <% end %>
+</table>

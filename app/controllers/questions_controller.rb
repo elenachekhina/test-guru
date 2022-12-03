@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   before_action :find_test, only: [:index, :new, :create]
-  before_action :find_question, only: [:show, :edit, :destroy]
+  before_action :find_question, only: [:show, :edit, :destroy, :update]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
@@ -9,24 +9,37 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    render @question
+
   end
 
   def new
-
+    @question = Question.new
   end
 
   def create
-    @test.questions << Question.new(question_params)
-    redirect_to action: "index", test_id: @test.id
+    @question = @test.questions.build(question_params)
+    if @question.save
+      redirect_to @question
+    else
+      render :new
+    end
   end
 
   def edit
 
   end
 
+  def update
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      render :edit
+    end
+  end
+
   def destroy
-    render plain: "Question #{@question.body} was successfully deleted" if @question.destroy
+    @question.destroy
+    redirect_to @question.test
   end
 
   private
