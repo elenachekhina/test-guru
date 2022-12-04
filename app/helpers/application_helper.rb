@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module ApplicationHelper
-  def year
-    Time.zone.now.year
+  def cur_year
+    Time.current.year
   end
 
-  def github_url(author, repo)
-    "https://github.com/#{author}/#{repo}"
+  def github_url(author:, repo:, title:)
+    link_to title, "https://github.com/#{author}/#{repo}", target: :_blank, rel: :noopener
   end
 end

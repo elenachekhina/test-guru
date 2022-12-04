@@ -4,7 +4,5 @@
     <th>Level</th>
     <th>Questions</th>
   </tr>
-  <% Test.all.each do |test| %>
-    <%= render test %>
-  <% end %>
+  <%= render @tests %>
 </table>
