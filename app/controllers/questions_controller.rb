@@ -1,35 +1,43 @@
+# frozen_string_literal: true
+
 class QuestionsController < ApplicationController
-  before_action :find_test, only: [:index, :new, :create]
-  before_action :find_question, only: [:show, :edit, :destroy]
+  before_action :find_test, only: %i[new create]
+  before_action :find_question, only: %i[show edit destroy update]
 
   rescue_from ActiveRecord::RecordNotFound, with: :rescue_with_question_not_found
 
-  def index
-
-  end
-
-  def show
-    render @question
-  end
+  def show; end
 
   def new
-
+    @question = @test.questions.build
   end
+
+  def edit; end
 
   def create
-    @test.questions << Question.new(question_params)
-    redirect_to action: "index", test_id: @test.id
+    @question = @test.questions.build(question_params)
+    if @question.save
+      redirect_to @question
+    else
+      render :new
+    end
   end
 
-  def edit
-
+  def update
+    if @question.update(question_params)
+      redirect_to @question
+    else
+      render :edit
+    end
   end
 
   def destroy
-    render plain: "Question #{@question.body} was successfully deleted" if @question.destroy
+    @question.destroy
+    redirect_to @question.test
   end
 
   private
+
   def find_test
     @test = Test.find(params[:test_id])
   end

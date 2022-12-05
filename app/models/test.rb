@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class Test < ApplicationRecord
   belongs_to :category
-  belongs_to :author, foreign_key: 'author_id', class_name: 'User'
+  belongs_to :author, class_name: 'User'
 
   has_many :questions, dependent: :destroy
   has_many :tests_results, dependent: :destroy
@@ -20,5 +22,9 @@ class Test < ApplicationRecord
     def tests_list_of_category(category)
       tests_of_category(category).pluck(:title)
     end
+  end
+
+  def to_s
+    title
   end
 end

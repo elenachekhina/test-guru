@@ -1,0 +1,4 @@
+<h1><%= @test %></h1>
+<%= link_to 'Add new question', new_test_question_path(@test) %>
+<%= render 'questions/questions', questions: @test.questions %>
+<%= link_to 'Back', tests_path %>
