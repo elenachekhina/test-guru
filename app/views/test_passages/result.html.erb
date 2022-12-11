@@ -1,0 +1,8 @@
+<div class=<%= define_class(@result) %>>
+  <%= number_to_percentage(@result, precision: 1) %>
+</div>
+
+<%= show_result(@result) %>
+
+<br>
+<%= link_to 'Back', tests_path %>

@@ -8,6 +8,10 @@ class Answer < ApplicationRecord
 
   scope :correct, -> { where(correct: true) }
 
+  def to_s
+    body
+  end
+
   private
 
   def validate_save
