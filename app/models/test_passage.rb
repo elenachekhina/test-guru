@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class TestPassage < ApplicationRecord
-
   SUCCESS_RATIO = 85
 
   belongs_to :test
@@ -51,5 +50,4 @@ class TestPassage < ApplicationRecord
   def questions_number
     self.test.questions.count
   end
-
 end

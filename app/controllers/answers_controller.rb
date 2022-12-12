@@ -43,5 +43,4 @@ class AnswersController < ApplicationController
   def answer_params
     params.require(:answer).permit(:body, :correct)
   end
-
 end

@@ -1,5 +1,4 @@
 module TestPassagesHelper
-
   CSS_CLASS_DICT = {
     true => 'correct',
     false => 'incorrect'
@@ -18,5 +17,4 @@ module TestPassagesHelper
   def options(success, option)
     DICT_NAME[option][success]
   end
-
 end
