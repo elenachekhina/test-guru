@@ -1,5 +1,5 @@
 <h1>Passing the <%= @test_passage.test %></h1>
-<h2><%= cur_question_number(@test_passage) %>/<%= questions_number(@test_passage) %>. <%= @test_passage.current_question %></h2>
+<h2><%= @test_passage.cur_question_number %>/<%= @test_passage.questions_number %>. <%= @test_passage.current_question %></h2>
 <%= form_with url: test_passage_path(@test_passage), local: true, method: :put do |form| %>
   <%= form.collection_check_boxes :answer_ids, @test_passage.current_question.answers, :id, :body, include_hidden: false do |b| %>
     <p>

@@ -46,17 +46,6 @@ questions = Question.create!([
                                { body: 'Question 7', test: tests[4] }
                              ])
 
-# TestPassage.create!([
-#                       { test: tests[0], user: users[0], result: 10 },
-#                       { test: tests[1], user: users[1], result: 5 },
-#                       { test: tests[2], user: users[2], result: 7 },
-#                       { test: tests[3], user: users[2], result: 4 },
-#                       { test: tests[4], user: users[2], result: 8 },
-#                       { test: tests[5], user: users[1], result: 7 },
-#                       { test: tests[3], user: users[1], result: 6 },
-#                       { test: tests[1], user: users[0], result: 7 }
-#                     ])
-
 Answer.create!([
                  { body: 'Answer 1', question: questions[0], correct: true },
                  { body: 'Answer 2', question: questions[1], correct: true },
