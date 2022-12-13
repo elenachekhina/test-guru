@@ -1,0 +1,8 @@
+<div class=<%= options(@test_passage.success?, :css_class) %>>
+  <%= number_to_percentage(@test_passage.result, precision: 1) %>
+</div>
+
+<%= options(@test_passage.success?, :conclusion) %>
+
+<br>
+<%= link_to 'Back', tests_path %>

@@ -8,7 +8,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 
-TestsResult.destroy_all
+TestPassage.destroy_all
 Question.destroy_all
 Test.destroy_all
 User.destroy_all
@@ -45,17 +45,6 @@ questions = Question.create!([
                                { body: 'Question 6', test: tests[4] },
                                { body: 'Question 7', test: tests[4] }
                              ])
-
-TestsResult.create!([
-                      { test: tests[0], user: users[0], result: 10 },
-                      { test: tests[1], user: users[1], result: 5 },
-                      { test: tests[2], user: users[2], result: 7 },
-                      { test: tests[3], user: users[2], result: 4 },
-                      { test: tests[4], user: users[2], result: 8 },
-                      { test: tests[5], user: users[1], result: 7 },
-                      { test: tests[3], user: users[1], result: 6 },
-                      { test: tests[1], user: users[0], result: 7 }
-                    ])
 
 Answer.create!([
                  { body: 'Answer 1', question: questions[0], correct: true },
