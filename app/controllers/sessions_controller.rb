@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  skip_before_action :authenticate_user!, only: %i[new create]
+  before_action :authenticate_user!, only: %i[destroy]
 
   def new; end
 
@@ -25,12 +25,6 @@ class SessionsController < ApplicationController
   private
 
   def redirect_path
-    if cookies[:path].present?
-      path = cookies[:path]
-      cookies.delete(:path)
-    else
-      path = tests_path
-    end
-    path
+    cookies.delete(:user_path) || tests_path
   end
 end

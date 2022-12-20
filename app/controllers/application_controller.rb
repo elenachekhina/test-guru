@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
   helper_method :current_user,
                 :logged_in?
 
@@ -10,7 +9,7 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     return if current_user
 
-    cookies[:path] = request.fullpath
+    cookies[:user_path] = request.fullpath
     redirect_to login_path, alert: 'Log in, please'
   end
 

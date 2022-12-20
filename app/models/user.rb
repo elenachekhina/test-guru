@@ -7,13 +7,15 @@ class User < ApplicationRecord
     email_uniqueness: 'Email already exists'
   }.freeze
 
+  EMAIL_VALIDATION = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+
   has_many :published_tests, foreign_key: 'author_id', class_name: 'Test', dependent: :destroy, inverse_of: :author
   has_many :test_passages, dependent: :destroy
   has_many :tests, through: :test_passages
 
   validates :email, presence: { message: VALIDATION_MESSAGES[:email_presence] }
   validates :email, format: {
-    with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,
+    with: EMAIL_VALIDATION,
     message: VALIDATION_MESSAGES[:email_format]
   }
   validates :email, uniqueness: { message: VALIDATION_MESSAGES[:email_uniqueness] }
