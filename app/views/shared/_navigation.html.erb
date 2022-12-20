@@ -1,0 +1,8 @@
+<% if logged_in? %>
+  <%= link_to 'TestGuru', tests_path %>
+  <%= content_tag :p, "Welcome, #{current_user.name} Guru" %>
+  <%= button_to 'Exit', logout_path %>
+<% else %>
+  <%= link_to 'TestGuru', login_path %>
+  <%= button_to 'Sign up', signup_path, method: :get %>
+<% end %>
