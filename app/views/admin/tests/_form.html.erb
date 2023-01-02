@@ -1,0 +1,18 @@
+<%= form_with model: [:admin, @test] do |form| %>
+  <%= render 'shared/errors', resource: @test %>
+  <p>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+  </p>
+  <p>
+    <%= form.label :category_id %>
+    <%= form.select :category_id, test_categories.map { |c| [c.title, c.id] } %>
+  </p>
+  <p>
+    <%= form.label :level %>
+    <%= form.select :level, TestsHelper::TEST_LEVELS.map { |key, value| [value, key] } %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

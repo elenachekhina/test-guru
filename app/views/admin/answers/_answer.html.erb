@@ -1,0 +1,9 @@
+<li>
+  <%= answer.body %>
+  <br>
+  <div>
+    <%= check_box("tag", tag.id, {checked: answer.correct, disabled: true}) %>
+    <%= button_to 'Edit', edit_admin_answer_path(answer), method: :get, form: {style: 'display:inline-block;'} %>
+    <%= button_to 'Delete', admin_answer_path(answer), method: :delete, form: {style: 'display:inline-block;'} %>
+  </div>
+</li>

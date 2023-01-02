@@ -1,8 +1,10 @@
-<% if logged_in? %>
-  <%= link_to 'TestGuru', tests_path %>
-  <%= content_tag :p, "Welcome, #{current_user.name} Guru" %>
-  <%= button_to 'Exit', logout_path %>
+<% if user_signed_in? %>
+  <div class="nav user">
+    <%= link_to 'TestGuru', tests_path %>
+    <%= content_tag :p, "Welcome, #{current_user.name} Guru" %>
+    <%= button_to 'Exit', destroy_user_session_path, method: :delete %>
+  </div>
 <% else %>
-  <%= link_to 'TestGuru', login_path %>
-  <%= button_to 'Sign up', signup_path, method: :get %>
+  <%= link_to 'TestGuru', new_user_session_path %>
+  <%= link_to 'Sign up', new_user_registration_path %>
 <% end %>

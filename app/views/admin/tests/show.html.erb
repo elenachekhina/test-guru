@@ -1,0 +1,5 @@
+<h1><%= @test %></h1>
+<%= render 'admin/questions/questions', questions: @test.questions %>
+<%= button_to 'Add new question', new_admin_test_question_path(@test), method: :get %>
+<br>
+<%= link_to 'Back', admin_tests_path %>

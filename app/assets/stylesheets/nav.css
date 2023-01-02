@@ -1,3 +1,14 @@
 .nav.user {
-    test-align: right;
+    text-align: right;
+    position: fixed;
+    top:10px;
+    right:10px;
+}
+
+.nav.footer {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
 }

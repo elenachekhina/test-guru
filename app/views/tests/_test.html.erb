@@ -1,5 +1,5 @@
 <tr>
-  <td><%= link_to test %></td>
+  <td><%= test.title %></td>
   <td><%= test_level test %></td>
   <td><%= test.questions.count %></td>
   <td><%= button_to 'Start', start_test_path(test), method: :post %></td>

@@ -1,0 +1,12 @@
+<h2>Tests</h2>
+<table>
+  <tr>
+    <th>Test name</th>
+    <th>Level</th>
+    <th>Questions</th>
+    <th colspan=2>Action</th>
+  </tr>
+  <%= render @tests %>
+</table>
+<br>
+<%= button_to 'Add test', new_admin_test_path(@test), method: :get %>
