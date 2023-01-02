@@ -1,0 +1,7 @@
+<h2><%= @question %></h2>
+<ol>
+  <%= render @question.answers %>
+</ol>
+<%= button_to 'Add answer', new_admin_question_answer_path(@question), method: :get %>
+<br>
+<%= link_to 'Back', admin_test_path(@question.test), method: :get %>

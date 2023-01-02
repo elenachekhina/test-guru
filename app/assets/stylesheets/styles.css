@@ -1,7 +1,9 @@
 .incorrect {
+    font-size: 25px;
     color: darkred;
 }
 
 .correct {
+    font-size: 25px;
     color: darkgreen;
 }

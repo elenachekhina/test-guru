@@ -1,23 +1,24 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  helper_method :current_user,
-                :logged_in?
 
-  private
+  protect_from_forgery with: :exception
 
-  def authenticate_user!
-    return if current_user
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  after_action :hello_flash_message, only: :create, if: :devise_controller?
 
-    cookies[:user_path] = request.fullpath
-    redirect_to login_path, alert: 'Log in, please'
+  protected
+
+  def hello_flash_message
+    flash[:notice] = "Welcome, #{current_user.name}!" if current_user&.name.present?
   end
 
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
   end
 
-  def logged_in?
-    current_user.present?
+  def after_sign_in_path_for(resource)
+    current_user.is_a?(Admin) ? admin_tests_path : (stored_location_for(resource) || root_path)
   end
+
 end
